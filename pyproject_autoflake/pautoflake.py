@@ -22,7 +22,10 @@ def _get_pyproject_toml_path(path_candidates: List[str]) -> str:
             pyproject_toml_path = Path(dir_path, "pyproject.toml")
             if pyproject_toml_path.exists() and pyproject_toml_path.is_file():
                 return str(pyproject_toml_path)
-            dir_path = dir_path.parent
+            next_dir_path = dir_path.parent
+            if next_dir_path == dir_path:
+                break
+            dir_path = next_dir_path
 
     raise ValueError("pyproject.toml not found.")
 
