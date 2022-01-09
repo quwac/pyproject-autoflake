@@ -13,9 +13,13 @@
     },
     "cSpell.words": [
         "autoflake",
+        "mathieudutour",
+        "ncipollo",
         "pautoflake",
+        "pypi",
         "pyproject",
-        "quwac"
+        "quwac",
+        "timheuer"
     ],
     "files.eol": "\n",
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
