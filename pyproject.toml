@@ -1,40 +1,36 @@
-# pyproject-autoflake
+[tool.poetry]
+name = "pyproject-autoflake"
+version = "1.0.0"
+description = "pyproject-autoflake (pautoflake), a monkey patching wrapper to connect autoflake with pyproject.toml configuration."
+authors = ["quwac <53551867+quwac@users.noreply.github.com>"]
+readme = "README.md"
 
-**pyproject-autoflake** (**pautoflake**), a monkey patching wrapper to connect [autoflake](https://github.com/myint/autoflake) with pyproject.toml configuration.
+[tool.poetry.dependencies]
+python = "^3.6"
+autoflake = "*"
+toml = ">=0.10.1"
 
-## Motivation
+[tool.poetry.dev-dependencies]
+black = "*"
+isort = "*"
+pyproject-flake8 = "*"
 
-The original autoflake does not support configuration files such as pyproject.toml.
-This is slightly inconvenient for modern Python development.
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-pautoflake is a thin wrapper library that calls autoflake with a configuration read from pyproject.toml.
+[tool.isort]
+profile = "black"
 
-pyproject-autoflake is inspired by [pyproject-flake8](https://github.com/csachs/pyproject-flake8). Many thanks! 😉
+[tool.flake8]
+max-line-length = 119
 
-## Installation
-
-### pip
-
-```sh
-pip install pyproject-autoflake
-```
-
-### poetry
-
-```sh
-poetry add -D pyproject-autoflake
-```
-
-## Usage
-
-At first, you add `[tool.autoflake]` in your pyproject.toml.
-
-```toml
-# pyproject.toml
-
-...
+[tool.black]
+line-length = 120
+target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
 
 [tool.autoflake]
+
 # return error code if changes are needed
 check = false
 # make changes to files instead of printing diffs
@@ -42,10 +38,10 @@ in-place = true
 # drill down directories recursively
 recursive = true
 # exclude file/directory names that match these comma-separated globs
-exclude = "<GLOBS>"
+# exclude = "<GLOBS>"
 # by default, only unused standard library imports are removed; specify a comma-separated list of additional
 # modules/packages
-imports = "<IMPORTS>"
+# imports = "<IMPORTS>"
 # expand wildcard star imports with undefined names; this only triggers if there is only one star import in
 # the file; this is skipped if there are any uses of `__all__` or `del` in the file
 expand-star-imports = true
@@ -60,16 +56,5 @@ remove-unused-variables = true
 # print more verbose logs (larger numbers are more verbose)
 verbose = 0
 
-...
-
-```
-
-Second, you call **p**autoflake.
-
-```bash
-pautoflake sample.py
-```
-
-## License
-
-[MIT License](./LICENSE)
+[tool.poetry.scripts]
+pautoflake = "pyproject_autoflake.pautoflake:main"
