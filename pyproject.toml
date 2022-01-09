@@ -27,10 +27,8 @@ max-line-length = 119
 
 [tool.black]
 line-length = 120
-target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
 
 [tool.autoflake]
-
 # return error code if changes are needed
 check = false
 # make changes to files instead of printing diffs
