@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -eu
 
 if [ ! -f "./pypi.env" ]; then
     echo "./pypi.env not found."
