@@ -20,7 +20,7 @@ jobs:
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install Dependencies
         run: |
-          poetry install --no-interaction
+          poetry install --no-dev --no-interaction
       - name: Create pypi.env
         id: create_pypi_env
         uses: timheuer/base64-to-file@v1.0.4
