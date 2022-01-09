@@ -2,5 +2,8 @@
 in-project = true
 create = false
 
+[repositories.pypi]
+url = "https://upload.pypi.org/legacy/"
+
 [repositories.testpypi]
 url = "https://test.pypi.org/legacy/"
