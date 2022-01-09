@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyproject-autoflake"
-version = "0.1.0"
+version = "0.2.0"
 description = "pyproject-autoflake (pautoflake), a monkey patching wrapper to connect autoflake with pyproject.toml configuration."
 authors = ["quwac <53551867+quwac@users.noreply.github.com>"]
 readme = "README.md"
