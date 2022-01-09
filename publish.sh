@@ -4,8 +4,8 @@ set -eu
 
 # shellcheck disable=SC2046,SC2086
 PROJECT_PATH="$(cd $(dirname $0) && pwd)"
-PYPI_ENV_PATH="$PROJECT_PATH/pypi.env"
 DIST_PATH="$PROJECT_PATH/dist"
+PYPI_ENV_PATH=$1
 
 if [ ! -f "$PYPI_ENV_PATH" ]; then
     echo "$PYPI_ENV_PATH not found."
