@@ -18,8 +18,7 @@ def _get_argv_from_toml(pyproject_path: Optional[str] = None) -> List[str]:
     with open(pyproject_path, "r") as f:
         obj = toml.load(f)
 
-    argv0 = re.sub(r"(-script\.pyw|\.exe)?$", "", sys.argv[0])
-    arg_pairs: List[Tuple[str, Union[None, str, int]]] = [(argv0, None)]
+    arg_pairs: List[Tuple[str, Union[None, str, int]]] = [(sys.argv[0], None)]
     arg_name_to_index: Dict[str, int] = {}
 
     try:
