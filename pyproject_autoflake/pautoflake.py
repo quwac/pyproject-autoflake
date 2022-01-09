@@ -1,11 +1,30 @@
 import os
-import re
 import signal
 import sys
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
 import autoflake
 import toml
+
+
+def _get_pyproject_toml_path(path_candidates: List[str]) -> str:
+    absolute_paths: List[Path] = []
+    for path_candidate in path_candidates:
+        path = Path(path_candidate)
+        if not path.is_absolute():
+            path = Path(Path.cwd(), path_candidate)
+        absolute_paths.append(path.resolve())
+
+    for absolute_path in absolute_paths:
+        dir_path = absolute_path if absolute_path.is_dir() else absolute_path.parent
+        while dir_path.exists():
+            pyproject_toml_path = Path(dir_path, "pyproject.toml")
+            if pyproject_toml_path.exists() and pyproject_toml_path.is_file():
+                return str(pyproject_toml_path)
+            dir_path = dir_path.parent
+
+    raise ValueError("pyproject.toml not found.")
 
 
 def _get_argv_from_toml(pyproject_path: Optional[str] = None) -> List[str]:
@@ -85,7 +104,12 @@ def main() -> int:
         signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     except AttributeError:
         pass
-    argv = _get_argv_from_toml()
+
+    path_candidates = list(filter(lambda arg: not arg.startswith("-"), sys.argv[1:]))
+    if len(path_candidates) == 0:
+        return autoflake._main(argv=[sys.argv[0], "-h"], standard_out=sys.stdout, standard_error=sys.stderr)
+    pyproject_toml = _get_pyproject_toml_path(path_candidates)
+    argv = _get_argv_from_toml(pyproject_toml)
 
     try:
         return autoflake._main(argv=argv, standard_out=sys.stdout, standard_error=sys.stderr)
