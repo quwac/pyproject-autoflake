@@ -4,7 +4,8 @@ version = "0.2.0"
 description = "pyproject-autoflake (pautoflake), a monkey patching wrapper to connect autoflake with pyproject.toml configuration."
 authors = ["quwac <53551867+quwac@users.noreply.github.com>"]
 readme = "README.md"
-repository= "https://github.com/quwac/pyproject-autoflake"
+repository = "https://github.com/quwac/pyproject-autoflake"
+keywords = ['formatter','autoflake','pyproject.toml']
 
 [tool.poetry.dependencies]
 python = "^3.6"
