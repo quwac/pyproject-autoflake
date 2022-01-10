@@ -2,13 +2,17 @@ import os
 import signal
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Tuple, Union
 
 import autoflake
 import toml
 
 
 def _get_pyproject_toml_path(path_candidates: List[str]) -> str:
+    path_in_current = os.path.join(os.getcwd(), "pyproject.toml")
+    if os.path.exists(path_in_current):
+        return path_in_current
+
     absolute_paths: List[Path] = []
     for path_candidate in path_candidates:
         path = Path(path_candidate)
@@ -30,9 +34,7 @@ def _get_pyproject_toml_path(path_candidates: List[str]) -> str:
     raise ValueError("pyproject.toml not found.")
 
 
-def _get_argv_from_toml(pyproject_path: Optional[str] = None) -> List[str]:
-    if pyproject_path is None:
-        pyproject_path = os.path.join(os.getcwd(), "pyproject.toml")
+def _get_argv_from_toml(pyproject_path: str) -> List[str]:
     assert (
         pyproject_path is not None and pyproject_path != "" and os.path.exists(pyproject_path)
     ), f"pyproject.toml not found. {pyproject_path}"
