@@ -1,5 +1,7 @@
 # pyproject-autoflake
 
+[![PyPI version](https://badge.fury.io/py/pyproject-autoflake.svg)](https://badge.fury.io/py/pyproject-autoflake) [![Python Versions](https://img.shields.io/pypi/pyversions/pyproject-autoflake.svg)](https://pypi.org/project/pyproject-autoflake/)
+
 **pyproject-autoflake** (**pautoflake**), a monkey patching wrapper to connect [autoflake](https://github.com/myint/autoflake) with pyproject.toml configuration.
 
 ## Motivation
