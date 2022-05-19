@@ -1,6 +1,6 @@
 - id: pautoflake
-    name: pyproject-autoflake
-    entry: pautoflake
-    language: python
-    'types': [python]
-    require_serial: true
+  name: pyproject-autoflake
+  entry: pautoflake
+  language: python
+  'types': [python]
+  require_serial: true
