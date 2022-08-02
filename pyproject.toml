@@ -8,7 +8,7 @@ repository = "https://github.com/quwac/pyproject-autoflake"
 keywords = ['formatter','autoflake','pyproject.toml']
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.2"
 autoflake = "*"
 toml = ">=0.10.1"
 
