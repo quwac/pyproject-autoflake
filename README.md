@@ -72,6 +72,20 @@ Second, you call **p**autoflake.
 pautoflake sample.py
 ```
 
+## pre-commit
+
+pyproject-autoflake supports [pre-commit](https://pre-commit.com/).
+
+```yaml
+# .pre-commit-config.yaml
+
+repos:
+  - repo: https://github.com/quwac/pyproject-autoflake
+    rev: 1.0.2 # or later. You can update by `pre-commit autoupdate`
+    hooks:
+      - id: pautoflake
+```
+
 ## License
 
 [MIT License](./LICENSE)
