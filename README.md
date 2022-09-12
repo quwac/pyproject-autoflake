@@ -1,4 +1,6 @@
-# pyproject-autoflake
+# autoflake >= 1.5.0 supports pyproject.toml! You no longer need this wrapper! Thank you autoflake-team!
+
+# [DEPRECATED]pyproject-autoflake
 
 [![PyPI version](https://badge.fury.io/py/pyproject-autoflake.svg)](https://badge.fury.io/py/pyproject-autoflake) [![Python Versions](https://img.shields.io/pypi/pyversions/pyproject-autoflake.svg)](https://pypi.org/project/pyproject-autoflake/)
 
